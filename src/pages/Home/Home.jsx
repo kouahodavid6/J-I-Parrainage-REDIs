@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 const Home = () => {
     return(
         <>
-            <Navbar />
+            <Navbar variant="default" showOnScroll={true} />
             {/* Animation d'apparition initiale pour Hero */}
             <div data-aos="fade-in" data-aos-duration="1200">
                 <Hero />
