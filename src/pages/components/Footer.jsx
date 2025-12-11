@@ -142,15 +142,32 @@ const Footer = ({
                             </p>
                         </div>
                         
-                        <div className="flex items-center gap-6">
+                        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+                            <h2>Contacts Admins:</h2>
+                            <a 
+                                href="https://wa.me/22540022693" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="text-blue-300/70 hover:text-cyan-300 text-sm transition-colors duration-300 hover:underline flex items-center gap-2 group"
+                                title="Contacter l'administrateur principal"
+                            >
+                                <FaWhatsapp className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                                <span className="hidden sm:inline">Admin 1</span>
+                                <span className="sm:hidden">Admin 1</span>
+                            </a>
+                            
+                            <div className="h-4 w-px bg-blue-500/30 hidden sm:block"></div>
+                            
                             <a 
                                 href="https://wa.me/2250171136261" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
-                                className="text-blue-300/70 hover:text-cyan-300 text-sm transition-colors duration-300 hover:underline flex items-center gap-1"
+                                className="text-blue-300/70 hover:text-cyan-300 text-sm transition-colors duration-300 hover:underline flex items-center gap-2 group"
+                                title="Contacter l'administrateur secondaire"
                             >
-                                <FaWhatsapp className="w-4 h-4" />
-                                Contact admin (WhatsApp)
+                                <FaWhatsapp className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                                <span className="hidden sm:inline">Admin 2</span>
+                                <span className="sm:hidden">Admin 2</span>
                             </a>
                         </div>
                     </div>
