@@ -1,6 +1,6 @@
 import Navbar2 from "./components/Navbar2";
 import Systeme from "./components/Systeme";
-import Footer2 from "./components/Footer2";
+import Footer from "../components/Footer";
 
 const Parrainage = () => {
     return(
@@ -12,7 +12,7 @@ const Parrainage = () => {
                 <Systeme />
             </div>
 
-            <Footer2 />
+            <Footer showQuickLinks={false} variant="compact" />
         </>
     );
 }
