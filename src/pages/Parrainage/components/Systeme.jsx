@@ -205,7 +205,9 @@ const Systeme = () => {
                                                     <span className="truncate">{student.email}</span>
                                                 </a>
                                                 <a
-                                                    href={`tel:${student.phone}`}
+                                                    href={`https://wa.me/${student.phone.replace(/\D/g, '')}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
                                                     className="flex items-center justify-center md:justify-start gap-1.5 sm:gap-2 text-cyan-200/80 hover:text-cyan-300 transition-colors text-sm sm:text-base"
                                                 >
                                                     <Phone className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
@@ -265,7 +267,9 @@ const Systeme = () => {
                                                         <span className="truncate">{sponsor.email}</span>
                                                     </a>
                                                     <a
-                                                        href={`tel:${sponsor.phone}`}
+                                                        href={`https://wa.me/${student.phone.replace(/\D/g, '')}`}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
                                                         className="flex items-center justify-center md:justify-start gap-1.5 sm:gap-2 text-blue-200/80 hover:text-blue-300 transition-colors text-sm sm:text-base"
                                                     >
                                                         <Phone className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
@@ -328,7 +332,9 @@ const Systeme = () => {
                                                         <span className="truncate">{mentee.email}</span>
                                                     </a>
                                                     <a
-                                                        href={`tel:${mentee.phone}`}
+                                                        href={`https://wa.me/${student.phone.replace(/\D/g, '')}`}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
                                                         className="flex items-center gap-1.5 sm:gap-2 text-blue-200/80 hover:text-blue-300 transition-colors text-xs sm:text-sm"
                                                     >
                                                         <Phone className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
