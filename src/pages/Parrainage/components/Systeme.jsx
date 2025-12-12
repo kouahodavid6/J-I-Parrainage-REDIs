@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, Search, UserCheck, Users, UserX, AlertCircle } from 'lucide-react';
+import { Mail, Phone, Search, UserCheck, Users, UserX, AlertCircle, User } from 'lucide-react';
 import useParrainageStore from '../../../store/parrainage.store';
 
 const Systeme = () => {
@@ -17,6 +17,7 @@ const Systeme = () => {
     } = useParrainageStore();
 
     const formattedData = getFormattedData();
+    const student = formattedData?.student; // L'étudiant qui a fait la recherche
     const sponsor = formattedData?.sponsor;
     const mentees = formattedData?.mentees || [];
     const type = formattedData?.type;
@@ -39,7 +40,7 @@ const Systeme = () => {
                                     error?.includes('non trouvé');
 
     return (
-        <div className="pt-20 px-6 relative overflow-hidden bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900">
+        <div className="pt-20 px-6 relative overflow-hidden bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 min-h-screen">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
                 <div className="max-w-4xl mx-auto">
                     {/* En-tête */}
@@ -161,8 +162,69 @@ const Systeme = () => {
                     )}
 
                     {/* Résultats */}
-                    {data && success && !loading && (
+                    {data && success && !loading && student && (
                         <div className="animate-fade-in">
+                            {/* Section Étudiant qui a recherché */}
+                            <div className="mb-8 sm:mb-12">
+                                <div className="flex items-center justify-between mb-4 sm:mb-6">
+                                    <h2 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2 sm:gap-3">
+                                        <User className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-cyan-400" />
+                                        <span>Ton Profil</span>
+                                    </h2>
+                                    <div className="bg-gradient-to-r from-cyan-900/30 to-blue-900/30 px-3 py-1 rounded-full text-xs sm:text-sm text-cyan-200">
+                                        {type === 'L1' ? 'Licence 1' : 'Licence 2'} • {filiere}
+                                    </div>
+                                </div>
+                                <div className="bg-gradient-to-br from-slate-900/60 to-blue-950/60 backdrop-blur-sm border border-cyan-400/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 hover:border-cyan-400/40 transition-all duration-300">
+                                    <div className="flex flex-col md:flex-row items-center gap-4 sm:gap-6">
+                                        <div className="w-full md:w-auto flex justify-center">
+                                            <img
+                                                src={student.photo_url}
+                                                alt={`${student.first_name} ${student.last_name}`}
+                                                className="w-10 h-10 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-xl sm:rounded-2xl object-cover border-4 border-cyan-400/30"
+                                            />
+                                        </div>
+                                        <div className="flex-1 text-center md:text-left">
+                                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">
+                                                {student.first_name} {student.last_name}
+                                            </h3>
+                                            <div className="flex items-center justify-center md:justify-start gap-2 mb-3 sm:mb-4">
+                                                <p className="text-cyan-300 text-sm sm:text-base md:text-lg">
+                                                    {type === 'L1' ? 'Étudiant en Licence 1' : 'Étudiant en Licence 2'}
+                                                </p>
+                                                <span className="text-xs px-2 py-1 bg-cyan-500/20 rounded-full text-cyan-200">
+                                                    {student.matricule}
+                                                </span>
+                                            </div>
+                                            <div className="flex gap-2 sm:gap-3">
+                                                <a
+                                                    href={`mailto:${student.email}`}
+                                                    className="flex items-center justify-center md:justify-start gap-1.5 sm:gap-2 text-cyan-200/80 hover:text-cyan-300 transition-colors text-sm sm:text-base"
+                                                >
+                                                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                                                    <span className="truncate">{student.email}</span>
+                                                </a>
+                                                <a
+                                                    href={`tel:${student.phone}`}
+                                                    className="flex items-center justify-center md:justify-start gap-1.5 sm:gap-2 text-cyan-200/80 hover:text-cyan-300 transition-colors text-sm sm:text-base"
+                                                >
+                                                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                                                    <span>{student.phone}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-cyan-400/10">
+                                        <p className="text-cyan-200/70 text-center text-sm md:text-base">
+                                            {type === 'L1' 
+                                                ? '✨ Tu es en première année. Ton parrain va t\'accompagner dans ton parcours !'
+                                                : '🌟 Tu es en deuxième année. Tu as maintenant la responsabilité d\'aider tes filleuls !'
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
                             {/* Parrain pour L1 */}
                             {type === 'L1' && sponsor && (
                                 <div>
@@ -181,11 +243,11 @@ const Systeme = () => {
                                                 <img
                                                     src={sponsor.photo_url}
                                                     alt={`${sponsor.first_name} ${sponsor.last_name}`}
-                                                    className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-xl sm:rounded-2xl object-cover border-4 border-blue-400/30"
+                                                    className="w-10 h-10 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-xl sm:rounded-2xl object-cover border-4 border-blue-400/30"
                                                 />
                                             </div>
                                             <div className="flex-1 text-center md:text-left">
-                                                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2">
+                                                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">
                                                     {sponsor.first_name} {sponsor.last_name}
                                                 </h3>
                                                 <div className="flex items-center gap-2 mb-3 sm:mb-4">
@@ -194,7 +256,7 @@ const Systeme = () => {
                                                         {sponsor.matricule}
                                                     </span>
                                                 </div>
-                                                <div className="flex flex-col gap-2 sm:gap-3">
+                                                <div className="flex gap-2 sm:gap-3">
                                                     <a
                                                         href={`mailto:${sponsor.email}`}
                                                         className="flex items-center justify-center md:justify-start gap-1.5 sm:gap-2 text-blue-200/80 hover:text-blue-300 transition-colors text-sm sm:text-base"
@@ -213,7 +275,7 @@ const Systeme = () => {
                                             </div>
                                         </div>
                                         <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-blue-400/10">
-                                            <p className="text-blue-200/70 text-center text-sm sm:text-base md:text-lg">
+                                            <p className="text-blue-200/70 text-center text-sm md:text-base">
                                                 🎉 Ton parrain <span className="font-bold text-blue-300">{sponsor.first_name}</span> est là pour t'aider tout au long de ton parcours !
                                             </p>
                                         </div>
