@@ -17,7 +17,7 @@ const Systeme = () => {
     } = useParrainageStore();
 
     const formattedData = getFormattedData();
-    const student = formattedData?.student; // L'étudiant qui a fait la recherche
+    const student = formattedData?.student;
     const sponsor = formattedData?.sponsor;
     const mentees = formattedData?.mentees || [];
     const type = formattedData?.type;
@@ -34,7 +34,25 @@ const Systeme = () => {
         clearError();
     };
 
-    // Vérifier si c'est une erreur "matricule non trouvé"
+    // Fonction pour formater le numéro pour WhatsApp
+    const formatWhatsAppNumber = (phone) => {
+        // Nettoyer le numéro (enlever tout sauf les chiffres)
+        const cleaned = phone.replace(/\D/g, '');
+        
+        // Si le numéro commence déjà par 225, le retourner tel quel
+        if (cleaned.startsWith('225')) {
+            return cleaned;
+        }
+        
+        // Si le numéro commence par 0, remplacer par +225
+        if (cleaned.startsWith('0')) {
+            return '225' + cleaned.substring(1);
+        }
+        
+        // Sinon, ajouter +225
+        return '225' + cleaned;
+    };
+
     const isMatriculeNotFoundError = error?.includes("n'est pas enregistré") || 
                                     error?.includes('introuvable') || 
                                     error?.includes('non trouvé');
@@ -205,13 +223,13 @@ const Systeme = () => {
                                                     <span className="truncate">{student.email}</span>
                                                 </a>
                                                 <a
-                                                    href={`https://wa.me/+225${student.phone.replace(/\D/g, '')}`}
+                                                    href={`https://wa.me/${formatWhatsAppNumber(student.phone)}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="flex items-center justify-center md:justify-start gap-1.5 sm:gap-2 text-cyan-200/80 hover:text-cyan-300 transition-colors text-sm sm:text-base"
                                                 >
                                                     <Phone className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                                                    <span>{student.phone}</span>
+                                                    <span>+225 {student.phone.replace(/\D/g, '').substring(1)}</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -231,7 +249,7 @@ const Systeme = () => {
                             {type === 'L1' && sponsor && (
                                 <div>
                                     <div className="flex items-center justify-between mb-4 sm:mb-6">
-                                        <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2 sm:gap-3">
+                                        <h2 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2 sm:gap-3">
                                             <UserCheck className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-blue-400" />
                                             <span>Ton Parrain</span>
                                         </h2>
@@ -252,7 +270,7 @@ const Systeme = () => {
                                                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">
                                                     {sponsor.first_name} {sponsor.last_name}
                                                 </h3>
-                                                <div className="flex items-center gap-2 mb-3 sm:mb-4">
+                                                <div className="flex items-center justify-center md:justify-start gap-2 mb-3 sm:mb-4">
                                                     <p className="text-blue-300 text-xs sm:text-sm">Étudiant en Licence 2</p>
                                                     <span className="text-xs px-2 py-1 bg-blue-500/20 rounded-full text-blue-200">
                                                         {sponsor.matricule}
@@ -267,13 +285,13 @@ const Systeme = () => {
                                                         <span className="truncate">{sponsor.email}</span>
                                                     </a>
                                                     <a
-                                                        href={`https://wa.me/+225${student.phone.replace(/\D/g, '')}`}
+                                                        href={`https://wa.me/${formatWhatsAppNumber(sponsor.phone)}`}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className="flex items-center justify-center md:justify-start gap-1.5 sm:gap-2 text-blue-200/80 hover:text-blue-300 transition-colors text-sm sm:text-base"
                                                     >
                                                         <Phone className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                                                        <span>{sponsor.phone}</span>
+                                                        <span>+225 {sponsor.phone.replace(/\D/g, '').substring(1)}</span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -291,7 +309,7 @@ const Systeme = () => {
                             {type === 'L2' && mentees.length > 0 && (
                                 <div>
                                     <div className="flex items-center justify-between mb-4 sm:mb-6">
-                                        <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2 sm:gap-3">
+                                        <h2 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2 sm:gap-3">
                                             <Users className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-blue-400" />
                                             <span>Tes Filleuls ({mentees.length})</span>
                                         </h2>
@@ -332,13 +350,13 @@ const Systeme = () => {
                                                         <span className="truncate">{mentee.email}</span>
                                                     </a>
                                                     <a
-                                                        href={`https://wa.me/+225${student.phone.replace(/\D/g, '')}`}
+                                                        href={`https://wa.me/${formatWhatsAppNumber(mentee.phone)}`}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className="flex items-center gap-1.5 sm:gap-2 text-blue-200/80 hover:text-blue-300 transition-colors text-xs sm:text-sm"
                                                     >
                                                         <Phone className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-                                                        <span>{mentee.phone}</span>
+                                                        <span>+225 {mentee.phone.replace(/\D/g, '').substring(1)}</span>
                                                     </a>
                                                 </div>
                                             </div>
