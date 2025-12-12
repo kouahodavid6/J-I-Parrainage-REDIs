@@ -251,7 +251,7 @@ const Systeme = () => {
                                                     {sponsor.first_name} {sponsor.last_name}
                                                 </h3>
                                                 <div className="flex items-center gap-2 mb-3 sm:mb-4">
-                                                    <p className="text-blue-300 text-sm sm:text-base md:text-lg">Étudiant en Licence 2</p>
+                                                    <p className="text-blue-300 text-xs sm:text-sm">Étudiant en Licence 2</p>
                                                     <span className="text-xs px-2 py-1 bg-blue-500/20 rounded-full text-blue-200">
                                                         {sponsor.matricule}
                                                     </span>
@@ -312,7 +312,7 @@ const Systeme = () => {
                                                             {mentee.first_name} {mentee.last_name}
                                                         </h3>
                                                         <div className="flex items-center gap-2">
-                                                            <p className="text-blue-300 text-sm sm:text-base">Étudiant en Licence 1</p>
+                                                            <p className="text-blue-300 text-xs sm:text-sm">Étudiant en Licence 1</p>
                                                             <span className="text-xs px-2 py-0.5 bg-blue-500/20 rounded-full text-blue-200">
                                                                 {mentee.matricule}
                                                             </span>
