@@ -34,7 +34,7 @@ const Systeme = () => {
         clearError();
     };
 
-    // Fonction pour formater le numéro pour WhatsApp (conserve le 0)
+    // Fonction pour formater le numéro pour WhatsApp
     const formatWhatsAppNumber = (phone) => {
         // Nettoyer le numéro (enlever tout sauf les chiffres)
         const cleaned = phone.replace(/\D/g, '');
@@ -44,14 +44,8 @@ const Systeme = () => {
             return cleaned;
         }
         
-        // Ajouter simplement le préfixe 225 en conservant le 0
+        // Ajouter simplement le préfixe 225
         return '225' + cleaned;
-    };
-
-    // Fonction pour afficher le numéro avec +225
-    const formatDisplayNumber = (phone) => {
-        const cleaned = phone.replace(/\D/g, '');
-        return `+225 ${cleaned}`;
     };
 
     const isMatriculeNotFoundError = error?.includes("n'est pas enregistré") || 
@@ -230,7 +224,7 @@ const Systeme = () => {
                                                     className="flex items-center justify-center md:justify-start gap-1.5 sm:gap-2 text-cyan-200/80 hover:text-cyan-300 transition-colors text-sm sm:text-base"
                                                 >
                                                     <Phone className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                                                    <span>{formatDisplayNumber(student.phone)}</span>
+                                                    <span>+225 {student.phone}</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -292,7 +286,7 @@ const Systeme = () => {
                                                         className="flex items-center justify-center md:justify-start gap-1.5 sm:gap-2 text-blue-200/80 hover:text-blue-300 transition-colors text-sm sm:text-base"
                                                     >
                                                         <Phone className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                                                        <span>{formatDisplayNumber(sponsor.phone)}</span>
+                                                        <span>+225 {sponsor.phone}</span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -357,7 +351,7 @@ const Systeme = () => {
                                                         className="flex items-center gap-1.5 sm:gap-2 text-blue-200/80 hover:text-blue-300 transition-colors text-xs sm:text-sm"
                                                     >
                                                         <Phone className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-                                                        <span>{formatDisplayNumber(mentee.phone)}</span>
+                                                        <span>+225 {mentee.phone}</span>
                                                     </a>
                                                 </div>
                                             </div>
