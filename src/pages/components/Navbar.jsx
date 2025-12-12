@@ -131,12 +131,12 @@ const Navbar = ({
                             to="/"
                             className="flex items-center justify-center group ml-auto"
                         >
-<button className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-blue-900/30 to-blue-800/20 hover:from-blue-800/40 hover:to-blue-700/30 backdrop-blur-sm border border-blue-500/20 hover:border-blue-400/40 rounded-lg sm:rounded-xl px-3 py-2 sm:px-4 sm:py-2.5 md:px-5 md:py-3 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/20 active:scale-95">
-    <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-blue-300 group-hover:text-blue-200 group-hover:-translate-x-0.5 transition-all duration-300" />
-    <span className="text-xs sm:text-sm md:text-base font-medium text-blue-200 group-hover:text-white whitespace-nowrap">
-        l'accueil
-    </span>
-</button>
+                            <button className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-blue-900/30 to-blue-800/20 hover:from-blue-800/40 hover:to-blue-700/30 backdrop-blur-sm border border-blue-500/20 hover:border-blue-400/40 rounded-lg sm:rounded-xl px-3 py-2 sm:px-4 sm:py-2.5 md:px-5 md:py-3 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/20 active:scale-95">
+                                <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-blue-300 group-hover:text-blue-200 group-hover:-translate-x-0.5 transition-all duration-300" />
+                                <span className="text-xs sm:text-sm md:text-base font-medium text-blue-200 group-hover:text-white whitespace-nowrap">
+                                    l'accueil
+                                </span>
+                            </button>
                         </RouterLink>
                     </div>
                 </div>
