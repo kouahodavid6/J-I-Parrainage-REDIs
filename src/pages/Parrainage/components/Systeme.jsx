@@ -40,7 +40,7 @@ const Systeme = () => {
                                     error?.includes('non trouvé');
 
     return (
-        <div className="pt-20 px-6 relative overflow-hidden bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 min-h-screen">
+        <div className="pt-20 px-6 relative overflow-hidden bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
                 <div className="max-w-4xl mx-auto">
                     {/* En-tête */}
@@ -196,7 +196,7 @@ const Systeme = () => {
                                                     {student.matricule}
                                                 </span>
                                             </div>
-                                            <div className="flex gap-2 sm:gap-3">
+                                            <div className="flex flex-col gap-2 sm:gap-3">
                                                 <a
                                                     href={`mailto:${student.email}`}
                                                     className="flex items-center justify-center md:justify-start gap-1.5 sm:gap-2 text-cyan-200/80 hover:text-cyan-300 transition-colors text-sm sm:text-base"
@@ -256,7 +256,7 @@ const Systeme = () => {
                                                         {sponsor.matricule}
                                                     </span>
                                                 </div>
-                                                <div className="flex gap-2 sm:gap-3">
+                                                <div className="flex flex-col gap-2 sm:gap-3">
                                                     <a
                                                         href={`mailto:${sponsor.email}`}
                                                         className="flex items-center justify-center md:justify-start gap-1.5 sm:gap-2 text-blue-200/80 hover:text-blue-300 transition-colors text-sm sm:text-base"
