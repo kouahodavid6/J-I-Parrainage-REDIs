@@ -205,7 +205,7 @@ const Systeme = () => {
                                                     <span className="truncate">{student.email}</span>
                                                 </a>
                                                 <a
-                                                    href={`https://wa.me/${student.phone.replace(/\D/g, '')}`}
+                                                    href={`https://wa.me/+225${student.phone.replace(/\D/g, '')}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="flex items-center justify-center md:justify-start gap-1.5 sm:gap-2 text-cyan-200/80 hover:text-cyan-300 transition-colors text-sm sm:text-base"
@@ -267,7 +267,7 @@ const Systeme = () => {
                                                         <span className="truncate">{sponsor.email}</span>
                                                     </a>
                                                     <a
-                                                        href={`https://wa.me/${student.phone.replace(/\D/g, '')}`}
+                                                        href={`https://wa.me/+225${student.phone.replace(/\D/g, '')}`}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className="flex items-center justify-center md:justify-start gap-1.5 sm:gap-2 text-blue-200/80 hover:text-blue-300 transition-colors text-sm sm:text-base"
@@ -332,7 +332,7 @@ const Systeme = () => {
                                                         <span className="truncate">{mentee.email}</span>
                                                     </a>
                                                     <a
-                                                        href={`https://wa.me/${student.phone.replace(/\D/g, '')}`}
+                                                        href={`https://wa.me/+225${student.phone.replace(/\D/g, '')}`}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className="flex items-center gap-1.5 sm:gap-2 text-blue-200/80 hover:text-blue-300 transition-colors text-xs sm:text-sm"
