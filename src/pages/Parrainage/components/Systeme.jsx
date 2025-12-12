@@ -350,7 +350,7 @@ const Systeme = () => {
                             {type === 'L1' && !sponsor && (
                                 <div className="bg-yellow-500/10 border border-yellow-400/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 text-center">
                                     <p className="text-yellow-300 text-sm sm:text-base md:text-lg">
-                                        Tu n'as pas encore de parrain assigné. Contacte l'administration du département.
+                                        Tu n'as pas encore de parrain assigné. Contacte l'administrateur de la plateforme.
                                     </p>
                                 </div>
                             )}
@@ -359,7 +359,7 @@ const Systeme = () => {
                             {type === 'L2' && mentees.length === 0 && (
                                 <div className="bg-yellow-500/10 border border-yellow-400/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 text-center">
                                     <p className="text-yellow-300 text-sm sm:text-base md:text-lg">
-                                        Tu n'as pas encore de filleuls assignés. Les attributions seront bientôt disponibles.
+                                        Tu n'as pas encore de filleuls assignés. Contacte l'administrateur de la plateforme.
                                     </p>
                                 </div>
                             )}
